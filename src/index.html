@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framer Motion Style Animations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="styles/custom.css">
+    <script defer src="scripts/main.js" type="module"></script>
+  </head>
+  <body class="bg-white overflow-x-hidden overflow-y-scroll m-0 p-0">
+    <nav class="py-5 lg:fixed top-0 left-0 z-50 w-full transition-all duration-500 backdrop-blur-md" id="topnav">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="w-full flex flex-col lg:flex-row">
+          <div class="flex justify-between lg:flex-row">
+            <a href="https://pagedone.io/" class="flex items-center">
+              <svg width="164" height="33" viewBox="0 0 164 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG content here -->
+              </svg>
+            </a>
+            <button data-collapse-toggle="navbar" type="button" class="inline-flex items-center p-2 ml-3 text-sm text-gray-100 rounded-lg lg:hidden hover:bg-gray-200/20 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-default" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="hidden w-full lg:flex lg:pl-11 max-lg:mt-1 max-lg:h-screen max-lg:overflow-y-auto text-white" id="navbar">
+            <ul class="flex lg:items-center lg:justify-center flex-col max-lg:gap-4 max-lg:pt-4 max-lg:mb-4 lg:mt-0 lg:flex-row lg:mx-auto">
+              <li>
+                <a href="#" class="mb-2 block lg:mr-6 md:mb-0 lg:text-left text-base text-white font-medium transition-all duration-500 hover:text-indigo-200">Home</a>
+              </li>
+              <li>
+                <a href="#" class="mb-2 block lg:mr-6 md:mb-0 lg:text-left text-white font-medium transition-all duration-500 hover:text-indigo-200">About us</a>
+              </li>
+              <li class="relative" x-data="{ open: false }">
+                <button @click="open = !open" @keydown.escape.window="open = false" class="flex items-center justify-between text-white text-base font-medium hover:text-indigo-200 transition-all duration-500 lg:mr-6 lg:mb-0 mr-auto lg:text-left lg:m-0" :aria-expanded="open" aria-haspopup="true" type="button">
+                  Products
+                  <svg class="w-3 h-2 ml-1.5" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L3.58579 3.58579C4.25245 4.25245 4.58579 4.58579 5 4.58579C5.41421 4.58579 5.74755 4.25245 6.41421 3.58579L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+                <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" @click.away="open = false" class="absolute left-0 mt-2 w-64 transition-all duration-500 bg-[#4b5b5c]/20 backdrop-blur-md shadow-md rounded-lg z-50 p-4" style="display: none">
+                  <ul>
+                    <li><a href="#" class="block px-4 py-2 text-white hover:bg-gray-100 rounded">Product 1</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-white hover:bg-gray-100 rounded">Product 2</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li class="relative" x-data="{ open: false }">
+                <button @click="open = !open" @keydown.escape.window="open = false" class="flex items-center justify-between text-white text-base font-medium hover:text-indigo-200 transition-all duration-500 mb-2 lg:mr-6 lg:mb-0 mr-auto lg:text-left lg:m-0" :aria-expanded="open" aria-haspopup="true" type="button">
+                  Features
+                  <svg class="w-3 h-2 ml-1.5" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L3.58579 3.58579C4.25245 4.25245 4.58579 4.58579 5 4.58579C5.41421 4.58579 5.74755 4.25245 6.41421 3.58579L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                </button>
+                <div x-show="open" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2" @click.away="open = false" class="absolute left-0 mt-2 w-64 transition-all duration-500 bg-[#4b5b5c]/20 backdrop-blur-md shadow-md rounded-lg z-50 p-4" style="display: none">
+                  <ul>
+                    <li><a href="#" class="block px-4 py-2 text-white hover:bg-gray-100 rounded">Feature 1</a></li>
+                    <li><a href="#" class="block px-4 py-2 text-white hover:bg-gray-100 rounded">Feature 2</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <div class="flex lg:items-center w-full justify-start flex-col lg:flex-row gap-4 lg:w-max max-lg:gap-4 lg:ml-14 lg:justify-end">
+              <button class="bg-indigo-50 text-indigo-600 rounded-full cursor-pointer font-semibold text-center shadow-xs transition-all duration-500 py-3 px-6 text-sm hover:bg-indigo-100">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section class="relative py-14 lg:pt-44 lg:pb-24 bg-gray-100 overflow-hidden">
+      <div
+        class="absolute inset-0 pointer-events-none opacity-50 blur-[10px] z-0"
+        style="
+          background-image:
+            repeating-linear-gradient(100deg, #3b82f6 10%, #a5b4fc 15%, #93c5fd 20%, #ddd6fe 25%, #60a5fa 30%),
+            repeating-linear-gradient(100deg, #fff 0%, #fff 7%, transparent 10%, transparent 12%, #fff 16%);
+          background-size: 300%, 200%;
+          background-position: 50% 50%, 50% 50%;
+          animation: aurora 60s linear infinite;
+          mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+          -webkit-mask-image: radial-gradient(ellipse at 100% 0%, black 10%, transparent 70%);
+        "
+      ></div>
+      <div class="w-full max-w-7xl mx-auto px-4 lg:px-8 relative z-10 bg-[#4b5b5c]/20 backdrop-blur-md shadow-md rounded-2xl py-10 px-6 lg:px-12">
+        <div class="w-full max-w-4xl mx-auto sm:px-12 mb-10 lg:mb-20">
+          <h1 class="hero-headline font-manrope font-bold text-4xl leading-snug sm:text-5xl text-center mb-5 text-white">The Art of Strategic Wallet Management</h1>
+          <p class="hero-subheadline text-xl font-medium leading-8 text-gray-400 text-center mb-14 max-w-xl mx-auto">where every expense becomes a brushstroke of intention, creating a masterpiece of financial well-being and wealth.</p>
+          <div class="hero-form flex flex-col sm:flex-row items-center max-w-xl mx-auto justify-center gap-y-4 sm:justify-between pr-2 sm:pr-1 sm:bg-white rounded-full mb-5 relative group transition-all duration-500 border border-transparent hover:border-indigo-600 focus-within:border-indigo-600 bg-[#4b5b5c]/20 backdrop-blur-md shadow-md">
+            <input type="email" class="block w-full px-6 py-3.5 text-base max-sm:text-center font-normal shadow-xs max-sm:bg-white text-gray-900 bg-transparent border-none rounded-full placeholder-gray-400 focus:outline-none leading-normal" placeholder="What's your work email?" required />
+            <button class="py-3 px-6 max-sm:w-full rounded-full bg-indigo-600 text-white text-sm leading-4 font-medium whitespace-nowrap transition-all duration-300 hover:bg-indigo-700 sm:absolute top-1.5 right-3">Get Started</button>
+          </div>
+          <p class="hero-note text-sm font-normal text-gray-500 text-center">no personal credit checks or founder guarantee.</p>
+        </div>
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-4 lg:justify-between">
+          <img src="https://pagedone.io/asset/uploads/1709270640.png" alt="" class="hero-img object-cover" />
+          <img src="https://pagedone.io/asset/uploads/1710391965.png" alt="" class="hero-img mx-auto w-56 object-cover" />
+          <img src="https://pagedone.io/asset/uploads/1709270672.png" alt="" class="hero-img object-cover" />
+        </div>
+      </div>
+    </section>
+    <div id="notification-stack" class="fixed bottom-24 right-6 z-50 flex flex-col gap-4"></div>
+    <button id="show-notification" class="fixed z-10 bottom-6 right-6 bg-indigo-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-indigo-700 transition">Show Notification</button>
+  </body>
+</html>
